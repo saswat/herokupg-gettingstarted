@@ -20,6 +20,8 @@ app.get('/cool', (request, response) => {
   response.send(cool());
 });
 
+// Must append ?ssl=true to the end of DATABASE_URL environment variable for the db to work 
+
 app.get('/db', (request, response) => {
   pg.connect(process.env.DATABASE_URL, (err, client, done) => {
     client.query('SELECT * FROM test_table', (err2, result) => {
